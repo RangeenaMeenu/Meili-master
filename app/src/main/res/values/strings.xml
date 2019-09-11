@@ -1,0 +1,113 @@
+<resources>
+    <string name="app_name">Meili</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_categories">Categories</string>
+    <string name="title_favourites">Favourites</string>
+    <string name="title_profile">Profile</string>
+
+    <string name="title_activity_favourites_">Meili</string>
+    <string name="title_activity_categories_">Meili</string>
+    <string name="title_activity_main2">Meili</string>
+    <string name="title_activity_men_shoes">Meili</string>
+    <string name="title_activity_item_page">Meili</string>
+    <string name="title_activity_buy_now_page">Meili</string>
+
+    <string name="description">
+    Upper Material: : Mesh (Air mesh)\n
+    Insole Material: : Fabric\n
+    Closure Type: : Lace-Up\n
+    Lining Material: : Cotton Fabric\n
+    Heel Height: : Low (1cm-3cm)
+    </string>
+
+    <string name="add_to_Fav">Add To Favourites</string>
+    <string name="add_to_cart">Add To Cart</string>
+    <string name="buy_now">Buy Now</string>
+
+    <string name="select_color">Color : </string>
+    <string name="select_size">Size : </string>
+    <string name="select_quantity">Quantity : </string>
+
+    <string-array name="colors">
+        <item>Black</item>
+        <item>White</item>
+        <item>Blue</item>
+    </string-array>
+
+    <string-array name="size">
+        <item>5.5</item>
+        <item>6.0</item>
+        <item>6.5</item>
+        <item>7.0</item>
+        <item>7.5</item>
+        <item>8.0</item>
+        <item>8.5</item>
+        <item>10.5</item>
+    </string-array>
+
+    <string-array name="qty">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string name="title_activity_deliver_page">Meili</string>
+
+    <string name="phone">0719875465.</string>
+    <string name="fName">Kavinda.</string>
+    <string name="lName">Samarasena.</string>
+    <string name="address">A12/5,\nSt homes,\nKottawa.</string>
+    <string name="confirm_delivery">Confirm Delivery</string>
+
+    <string name="filter_button">Filter Items</string>
+    <string name="title_activity_filter_item_page">Filter_item_page</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="send_email">Send Email</string>
+    <string name="name">Amal</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name">First Name</string>
+    <string name="Address">Address</string>
+    <string name="contact_no">Contact No</string>
+    <string name="email">Email</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="password">Password</string>
+    <string name="signin">SignIn</string>
+    <string name="admin_login">Login As Admin</string>
+    <string name="Register">Register</string>
+    <string name="reg">Registration</string>
+    <string name="login">Login</string>
+    <string name="profile">Profile</string>
+    <string name="profile_view">Profile View</string>
+    <string name="frando">frando</string>
+    <string name="title_activity_user_profile">Meili</string>
+    <string name="title_activity_profile_">Meili</string>
+    <string name="title_activity_register_user">Meili</string>
+    <string name="title_activity_admin__dashboard">Meili</string>
+    <string name="title_activity_admin_category">adminCategoryActivity</string>
+    <string name="title_activity_update_item">UpdateItem</string>
+    <string name="title_activity_delete_item">DeleteItem</string>
+
+    <string-array name="shoe_category">
+        <item>Men</item>
+        <item>Women</item>
+        <item>Kids</item>
+        <item>Sports</item>
+    </string-array>
+    <string name="title_activity_shopping_cart">Meili</string>
+    <string name="title_activity_pay">Meili</string>
+    <string name="title_activity_order">Meili</string>
+
+    <string name="filter_done">Apply</string>
+    <string name="txtQuantity">Qty</string>
+    <string name="txtShoeName">Shoe Name</string>
+    <string name="txtTotal">Total</string>
+    <string name="btnConfirmOrder">Confirm Order</string>
+    <string name="txtMyOrders">My Orders</string>
+    <string name="btnManagerMyOrders">Manage My Orders</string>
+
+
+</resources>
