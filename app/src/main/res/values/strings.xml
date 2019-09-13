@@ -118,6 +118,21 @@
     <string name="txt_postal_code">Postal Code</string>
     <string name="txt_order_successful">Order Successful</string>
     <string name="btn_return_home">Return Home</string>
+    <string name="username">Username</string>
+    <string name="reenter_password">Re-enter Password</string>
+    <string name="add_user">Add User</string>
+    <string name="add">Add</string>
+    <string name="manage_users">Manage Users</string>
+    <string name="manage_products">Manage products</string>
+    <string name="admin_dash">Admin Dashboard</string>
+    <string name="user_ID">User ID</string>
+    <string name="remove_user">Remove User</string>
+    <string name="update_user">Update User</string>
+    <string name="view_users">View users</string>
+    <string name="update">Update</string>
+    <string name="users">Users</string>
+
+
 
 
 </resources>
