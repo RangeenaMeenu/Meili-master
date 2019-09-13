@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class Profile_Activity extends AppCompatActivity {
@@ -71,7 +72,7 @@ public class Profile_Activity extends AppCompatActivity {
     }
 
     public void onAdminLoginClick(View view){
-        Intent fav = new Intent(Profile_Activity.this,Admin_Dashboard.class);
+        Intent fav = new Intent(Profile_Activity.this,Dashboard.class);
         startActivity(fav);
     }
 

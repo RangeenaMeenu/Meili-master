@@ -29,44 +29,24 @@
     <string name="select_size">Size : </string>
     <string name="select_quantity">Quantity : </string>
 
-    <string-array name="colors">
-        <item>Black</item>
-        <item>White</item>
-        <item>Blue</item>
-    </string-array>
-
-    <string-array name="size">
-        <item>5.5</item>
-        <item>6.0</item>
-        <item>6.5</item>
-        <item>7.0</item>
-        <item>7.5</item>
-        <item>8.0</item>
-        <item>8.5</item>
-        <item>10.5</item>
-    </string-array>
-
-    <string-array name="qty">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </string-array>
     <string name="title_activity_deliver_page">Meili</string>
 
     <string name="phone">0719875465.</string>
+
     <string name="fName">Kavinda.</string>
     <string name="lName">Samarasena.</string>
+
     <string name="address">A12/5,\nSt homes,\nKottawa.</string>
     <string name="confirm_delivery">Confirm Delivery</string>
-
     <string name="filter_button">Filter Items</string>
     <string name="title_activity_filter_item_page">Filter_item_page</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
 
+    <string name="title_notifications">Notifications</string>
     <string name="send_email">Send Email</string>
     <string name="name">Amal</string>
     <string name="last_name">Last Name</string>
+
     <string name="first_name">First Name</string>
     <string name="Address">Address</string>
     <string name="contact_no">Contact No</string>
@@ -90,13 +70,6 @@
     <string name="title_activity_admin_category">adminCategoryActivity</string>
     <string name="title_activity_update_item">UpdateItem</string>
     <string name="title_activity_delete_item">DeleteItem</string>
-
-    <string-array name="shoe_category">
-        <item>Men</item>
-        <item>Women</item>
-        <item>Kids</item>
-        <item>Sports</item>
-    </string-array>
     <string name="title_activity_shopping_cart">Meili</string>
     <string name="title_activity_pay">Meili</string>
     <string name="title_activity_order">Meili</string>
@@ -105,9 +78,50 @@
     <string name="txtQuantity">Qty</string>
     <string name="txtShoeName">Shoe Name</string>
     <string name="txtTotal">Total</string>
+
     <string name="btnConfirmOrder">Confirm Order</string>
     <string name="txtMyOrders">My Orders</string>
     <string name="btnManagerMyOrders">Manage My Orders</string>
+    <string name="add_user">Add User</string>
+    <string name="remove_user">Remove User</string>
+    <string name="update_user">Update User</string>
+    <string name="view_users">View Users</string>
+    <string name="manage_products">Manage Products</string>
+    <string name="manage_users">Manage Users</string>
+    <string name="back">Back</string>
+    <string name="reenter_password">Re-enter Password</string>
+    <string name="username">Username</string>
+    <string name="user_ID">User ID</string>
+    <string-array name="colors">
+        <item>Black</item>
+        <item>White</item>
+        <item>Blue</item>
+    </string-array>
+    <string-array name="size">
+        <item>5.5</item>
+        <item>6.0</item>
+        <item>6.5</item>
+        <item>7.0</item>
+        <item>7.5</item>
+        <item>8.0</item>
+        <item>8.5</item>
+        <item>10.5</item>
+    </string-array>
+    <string-array name="qty">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="shoe_category">
+        <item>Men</item>
+        <item>Women</item>
+        <item>Kids</item>
+        <item>Sports</item>
+    </string-array>
+    <string name="users">Users</string>
+    <string name="add">Add</string>
+    <string name="update">Update</string>
+    <string name="admin_dash">Admin Dashboard</string>
 
 
 </resources>

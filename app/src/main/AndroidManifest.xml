@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".edit_order_activity"></activity>
+        <activity android:name=".view_users"></activity>
+        <activity android:name=".remove_user" />
+        <activity android:name=".update_user" />
+        <activity android:name=".Dashboard" />
+        <activity android:name=".add_user" />
+        <activity android:name=".Users" />
+        <activity android:name=".edit_order_activity" />
         <activity android:name=".SummaryActivity" />
         <activity
             android:name=".Order"
