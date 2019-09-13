@@ -72,7 +72,7 @@
         android:layout_width="364dp"
         android:layout_height="48dp"
         android:layout_marginTop="32dp"
-        android:onClick="onAdminLoginClick"
+        android:onClick="onAsAdminClick"
         android:text="@string/admin_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"

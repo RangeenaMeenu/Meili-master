@@ -11,11 +11,11 @@ import androidx.annotation.NonNull;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 public class Profile_Activity extends AppCompatActivity {
     private TextView mTextMessage;
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -71,9 +71,9 @@ public class Profile_Activity extends AppCompatActivity {
         startActivity(fav);
     }
 
-    public void onAdminLoginClick(View view){
-        //Intent fav = new Intent(Profile_Activity.this,Dashboard.class);
-        //startActivity(fav);
+    public void onAsAdminClick(View view){
+        Intent fav = new Intent(Profile_Activity.this,Dashboard.class);
+        startActivity(fav);
     }
 
 }

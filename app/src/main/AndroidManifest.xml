@@ -62,6 +62,24 @@
             android:name=".Favourites_Activity"
             android:label="@string/title_activity_favourites_" />
         <activity
+            android:name=".Dashboard"
+            android:label="@string/title_activity_favourites_" />
+        <activity
+            android:name=".add_user"
+            android:label="@string/title_activity_favourites_" />
+        <activity
+            android:name=".remove_user"
+            android:label="@string/title_activity_favourites_" />
+        <activity
+            android:name=".update_user"
+            android:label="@string/title_activity_favourites_" />
+        <activity
+            android:name=".Users"
+            android:label="@string/title_activity_favourites_" />
+        <activity
+            android:name=".view_users"
+            android:label="@string/title_activity_favourites_" />
+        <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
             <intent-filter>
