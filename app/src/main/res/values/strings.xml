@@ -118,6 +118,7 @@
     <string name="txt_postal_code">Postal Code</string>
     <string name="txt_order_successful">Order Successful</string>
     <string name="btn_return_home">Return Home</string>
+
     <string name="username">Username</string>
     <string name="reenter_password">Re-enter Password</string>
     <string name="add_user">Add User</string>

@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".deliver_page">
+    tools:context=".successful_order_message">
 
     <Button
         android:id="@+id/button11"
@@ -15,7 +15,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginBottom="36dp"
         android:background="#976AE2"
-        android:onClick="onConfirmOrderCLick"
+        android:onClick="onManageOrdersClick"
         android:text="@string/btnManagerMyOrders"
         app:layout_constraintBottom_toTopOf="@+id/nav_view"
         app:layout_constraintEnd_toStartOf="@+id/button12"
@@ -29,7 +29,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:background="#976AE2"
-        android:onClick="onConfirmOrderCLick"
+        android:onClick="onReturnHomeClick"
         android:text="@string/btn_return_home"
         app:layout_constraintBaseline_toBaselineOf="@+id/button11"
         app:layout_constraintEnd_toEndOf="parent" />

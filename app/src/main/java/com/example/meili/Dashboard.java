@@ -48,14 +48,13 @@ public class Dashboard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         Menu menu = navView.getMenu();
         MenuItem menuItem = menu.getItem(3);
         menuItem.setChecked(true);
-
-
     }
 
     public void onclick_users(View view){
