@@ -72,8 +72,8 @@ public class Profile_Activity extends AppCompatActivity {
     }
 
     public void onAdminLoginClick(View view){
-        Intent fav = new Intent(Profile_Activity.this,Dashboard.class);
-        startActivity(fav);
+        //Intent fav = new Intent(Profile_Activity.this,Dashboard.class);
+        //startActivity(fav);
     }
 
 }
