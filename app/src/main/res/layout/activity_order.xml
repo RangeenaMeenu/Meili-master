@@ -162,8 +162,7 @@
         android:layout_marginTop="46dp"
         android:layout_marginEnd="114dp"
         android:layout_marginRight="114dp"
-        android:layout_marginBottom="117dp"
-        android:text="Total Amount = Rs 40000" />
+        android:layout_marginBottom="117dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
