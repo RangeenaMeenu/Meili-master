@@ -79,6 +79,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button5" />
 
+    <Button
+        android:id="@+id/button16"
+        android:layout_width="364dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:onClick="onLoginAsSysAdminClick"
+        android:text="@string/sysAdmin_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.595"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button6" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
         android:layout_width="0dp"

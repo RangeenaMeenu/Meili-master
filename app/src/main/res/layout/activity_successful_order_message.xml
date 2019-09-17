@@ -8,7 +8,7 @@
     tools:context=".successful_order_message">
 
     <Button
-        android:id="@+id/btnAddUser"
+        android:id="@+id/button11"
         android:layout_width="153dp"
         android:layout_height="49dp"
         android:layout_marginStart="8dp"
@@ -31,7 +31,7 @@
         android:background="#976AE2"
         android:onClick="onReturnHomeClick"
         android:text="@string/btn_return_home"
-        app:layout_constraintBaseline_toBaselineOf="@+id/btnAddUser"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button11"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -54,11 +54,52 @@
         android:text="@string/txt_order_successful"
         android:textColor="@android:color/holo_green_dark"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/btnAddUser"
+        app:layout_constraintBottom_toTopOf="@+id/button11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.176" />
+
+    <TextView
+        android:id="@+id/textView42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginBottom="56dp"
+        android:text="@string/txt_orderid"
+        app:layout_constraintBottom_toTopOf="@+id/textView47"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_dilivery_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintStart_toEndOf="@+id/textView42"
+        tools:layout_editor_absoluteY="246dp" />
+
+    <TextView
+        android:id="@+id/textView47"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:text="@string/txt_delivery"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="324dp" />
+
+    <TextView
+        android:id="@+id/textView45"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_dilivery_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.261"
+        app:layout_constraintStart_toEndOf="@+id/textView47"
+        tools:layout_editor_absoluteY="324dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

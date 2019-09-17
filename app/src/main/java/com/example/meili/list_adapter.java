@@ -45,6 +45,7 @@ public class list_adapter extends ArrayAdapter<String> {
     }
 
     static class ViewHolder{
+        public TextView orderId;
         ImageView mItemImage;
         TextView mItemName;
 

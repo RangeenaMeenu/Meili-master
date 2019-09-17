@@ -8,10 +8,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class successful_order_message extends AppCompatActivity {
+
+    TextView orderId;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -54,6 +57,14 @@ public class successful_order_message extends AppCompatActivity {
         Menu menu = navView.getMenu();
         MenuItem menuItem = menu.getItem(1);
         menuItem.setChecked(true);
+
+        UserSession userSession = UserSession.getInstance();
+        long id = userSession.getOrderId();
+
+        orderId = findViewById(R.id.textView47);
+        orderId.setText(Long.toString(id));
+
+
     }
 
     public void onManageOrdersClick(View view){

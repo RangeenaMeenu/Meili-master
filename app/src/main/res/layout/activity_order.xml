@@ -47,10 +47,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/colorPrimaryDark"
-        android:textColor="@android:color/white"
-        android:textSize="20dp"
+        android:onClick="onOrderClick"
+        android:text="Order"
 
-        android:text="Order" />
+        android:textColor="@android:color/white"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/textView11"

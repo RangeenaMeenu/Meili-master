@@ -132,7 +132,15 @@
     <string name="view_users">View users</string>
     <string name="update">Update</string>
     <string name="users">Users</string>
-    <string name="check">Check</string>
+    <string name="btn_update_profile">Update</string>
+    <string name="btn_logout">Logout</string>
+    <string name="btn_delete_profile">DElete</string>
+    <string name="txt_update_delivery">update delivery</string>
+    <string name="check">check</string>
+    <string name="txt_dilivery_date">5 - 6 businessdays</string>
+    <string name="txt_orderid">Order Id :</string>
+    <string name="txt_delivery">Estimated delivery :</string>
+    <string name="sysAdmin_login">Login as System Admin</string>
 
 
 </resources>

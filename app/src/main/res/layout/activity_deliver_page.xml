@@ -84,14 +84,13 @@
         app:layout_constraintVertical_bias="0.901" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/fname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
         android:layout_marginLeft="64dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/fName"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
         app:layout_constraintStart_toEndOf="@+id/textView2" />
 
@@ -103,7 +102,6 @@
         android:layout_marginLeft="60dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/lName"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView3"
         app:layout_constraintStart_toEndOf="@+id/textView3" />
 
@@ -115,7 +113,6 @@
         android:layout_marginLeft="64dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/phone"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView4"
         app:layout_constraintStart_toEndOf="@+id/textView4" />
 
@@ -127,7 +124,6 @@
         android:layout_marginLeft="52dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/address"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView5"
         app:layout_constraintStart_toEndOf="@+id/textView5" />
 
@@ -150,7 +146,6 @@
         android:layout_marginLeft="56dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView31"
         app:layout_constraintStart_toEndOf="@+id/textView31" />
 
@@ -173,7 +168,6 @@
         android:layout_marginLeft="80dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView32"
         app:layout_constraintStart_toEndOf="@+id/textView32" />
 

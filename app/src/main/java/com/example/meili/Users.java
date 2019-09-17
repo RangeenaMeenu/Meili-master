@@ -5,8 +5,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +22,8 @@ public class Users extends AppCompatActivity {
 
     DBHelper mydb;
     Button add, update, delete, all;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -127,6 +131,18 @@ public class Users extends AppCompatActivity {
         builder.setTitle(title);
         builder.setMessage(message);
         builder.show();
+    }
+
+    public void onLogOutClick(View view){
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = sharedPreferences.edit();
+
+        editor.remove("UserId");
+        editor.putString("loginStatus","false");
+        editor.commit();
+
+        Intent intent = new Intent(Users.this,Profile_Activity.class);
+        startActivity(intent);
     }
 
 }

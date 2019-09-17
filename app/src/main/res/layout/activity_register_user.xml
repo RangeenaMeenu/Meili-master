@@ -65,7 +65,7 @@
                 android:text="@string/first_name" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/fname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -82,6 +82,7 @@
                 tools:layout_editor_absoluteY="437dp" />
 
             <EditText
+                android:id="@+id/lname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -92,9 +93,24 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@string/username" />
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/username"
+                android:inputType="phone" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/contact_no" />
 
             <EditText
+                android:id="@+id/phone"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:ems="10"
@@ -108,6 +124,7 @@
                 android:text="@string/email" />
 
             <EditText
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:ems="10"
@@ -119,44 +136,58 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:text="@string/gender" />
+                android:text="@string/Address" />
 
-            <RadioGroup
+            <EditText
+                android:id="@+id/address"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radioButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:text="@string/male" />
-
-                <RadioButton
-                    android:id="@+id/radioButton2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:text="@string/female" />
-            </RadioGroup>
+                android:layout_height="40dp"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/Address"
+                android:inputType="textEmailAddress" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:text="@string/Address" />
+                android:text="@string/txt_postal_code" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/postalCode"
                 android:layout_width="match_parent"
-                android:layout_height="302dp"
+                android:layout_height="40dp"
                 android:ems="10"
-
                 android:gravity="center"
-                android:hint="@string/Address"
-                android:inputType="textMultiLine"
-                tools:layout_editor_absoluteX="32dp"
-                tools:layout_editor_absoluteY="459dp" />
+                android:hint="@string/txt_postal_code"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:text="@string/password" />
+
+            <EditText
+                android:id="@+id/pwd"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/password"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:text="@string/reenter_password" />
+
+            <EditText
+                android:id="@+id/rePwd"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/password"
+                android:inputType="textEmailAddress" />
 
         </LinearLayout>
     </ScrollView>

@@ -39,21 +39,21 @@ public class DBHelper extends SQLiteOpenHelper {
 
                 "CREATE TABLE " + UsersMaster.Admin.TABLE_NAME +" (" +
 
-                        UsersMaster.Admin._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        UsersMaster.Admin._ID + " INTEGER PRIMARY KEY," +
                         "FOREIGN KEY ("+UsersMaster.Admin._ID+") REFERENCES "+ UsersMaster.User.TABLE_NAME+"("+UsersMaster.User._ID+") ON DELETE CASCADE)";
 
         String SQL_CREATE_CUSTOMER =
 
                 "CREATE TABLE " + UsersMaster.Customer.TABLE_NAME + "( " +
 
-                        UsersMaster.Customer._ID +" INTEGER PRIMARY KEY AUTOINCREMENT," +
+                        UsersMaster.Customer._ID +" INTEGER PRIMARY KEY," +
                         UsersMaster.Customer.COLUMN_NAME_phone + " TEXT," +
                         UsersMaster.Customer.COLUMN_NAME_address + " TEXT," +
                         UsersMaster.Customer.COLUMN_NAME_postalCode + " TEXT," +
                         "FOREIGN KEY ("+UsersMaster.Customer._ID+") REFERENCES "+ UsersMaster.User.TABLE_NAME+"("+UsersMaster.User._ID+") ON DELETE CASCADE)";
 
         String SQL_CREATE_SYSTEM_MANAGER = "CREATE TABLE " + UsersMaster.System_Manager.TABLE_NAME + " ("
-                + UsersMaster.System_Manager._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                + UsersMaster.System_Manager._ID + " INTEGER PRIMARY KEY," +
                 "FOREIGN KEY ("+UsersMaster.System_Manager._ID+") REFERENCES "+ UsersMaster.User.TABLE_NAME+"("+UsersMaster.User._ID+") ON DELETE CASCADE)";
 
         String SQL_CREATE_FAVOURITE = "CREATE TABLE " + ProductMaster.favourite.TABLE_NAME + "(" +
@@ -143,7 +143,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean addOrder(String date, int userId, long payId, long billId, long shipId){
+    public long addOrder(String date, int userId, long payId, long billId, long shipId){
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -154,13 +154,8 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(OrderMaster.orders.COLUMN_SHIP_ID,shipId);
 
         long newRowId = db.insert(OrderMaster.orders.TABLE_NAME,null,values);
+        return newRowId;
 
-        if(newRowId > 0){
-            return true;
-        }
-        else{
-            return false;
-        }
 
     }
 
@@ -272,5 +267,246 @@ public class DBHelper extends SQLiteOpenHelper {
         return newRowId;
     }
 
+    public Cursor getOrders(int cusId){
+        SQLiteDatabase db = getReadableDatabase();
+        String id = String.valueOf(cusId);
+        String[] projection = {
+                OrderMaster.orders._ID,
+                OrderMaster.orders.COLUMN_SHIP_ID
+        };
 
+        String selection = OrderMaster.orders.COLUMN_CID + " = ?";
+        String[] selsctionargs = {id};
+        String sortOrder = OrderMaster.orders._ID+" DESC";
+
+        Cursor cursor = db.query(
+                OrderMaster.orders.TABLE_NAME,
+                projection,
+                selection,
+                selsctionargs,
+                null,
+                null,
+                sortOrder
+                );
+
+        return cursor;
+    }
+
+    public Cursor getOrderDetails(int cusId){
+        SQLiteDatabase db = getReadableDatabase();
+        String id = String.valueOf(cusId);
+        String[] projection = {
+                OrderMaster.orders._ID,
+                OrderMaster.orders.COLUMN_SHIP_ID
+        };
+
+        String selection = OrderMaster.orders.COLUMN_CID + " = ?";
+        String[] selsctionargs = {id};
+        String sortOrder = OrderMaster.orders._ID+" DESC";
+
+        Cursor cursor = db.query(
+                OrderMaster.orders.TABLE_NAME,
+                projection,
+                selection,
+                selsctionargs,
+                null,
+                null,
+                sortOrder
+        );
+
+        return cursor;
+    }
+
+
+    public long registeruser(String firstname, String lname,String username, String phone, String email, String address, String postalCode,String pwd) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        //add user to user table
+        ContentValues values = new ContentValues();
+        values.put(UsersMaster.User.COLUMN_NAME_fname,firstname);
+        values.put(UsersMaster.User.COLUMN_NAME_lname,lname);
+        values.put(UsersMaster.User.COLUMN_NAME_userName,username);
+        values.put(UsersMaster.User.COLUMN_NAME_email,email);
+        values.put(UsersMaster.User.COLUMN_NAME_pwd,pwd);
+
+        long userRowId = db.insert(UsersMaster.User.TABLE_NAME,null,values);
+
+        //add user to customer table
+        ContentValues values1 = new ContentValues();
+        values1.put(UsersMaster.Customer._ID,userRowId);
+        values1.put(UsersMaster.Customer.COLUMN_NAME_phone,phone);
+        values1.put(UsersMaster.Customer.COLUMN_NAME_address,address);
+        values1.put(UsersMaster.Customer.COLUMN_NAME_postalCode,postalCode);
+
+        long cusRowId = db.insert(UsersMaster.Customer.TABLE_NAME,null,values1);
+
+
+        //check if insertion is successful and return id
+        if(userRowId != -1 && cusRowId != -1){
+            return userRowId;
+        }else
+            return 0;
+
+    }
+
+    public boolean update_customer(int id, String firstname, String lname, String username, String phone, String email, String address, String postalCode,String pwd) {
+        SQLiteDatabase db = getReadableDatabase();
+
+        //update User table
+        ContentValues values = new ContentValues();
+        values.put(UsersMaster.User.COLUMN_NAME_fname,firstname);
+        values.put(UsersMaster.User.COLUMN_NAME_lname,lname);
+        values.put(UsersMaster.User.COLUMN_NAME_userName,username);
+        values.put(UsersMaster.User.COLUMN_NAME_email,email);
+        values.put(UsersMaster.User.COLUMN_NAME_pwd,pwd);
+
+        String selction = UsersMaster.User._ID  + " = ? ";
+        String[] args = {String.valueOf(id)};
+
+        int count1 = db.update(
+                UsersMaster.User.TABLE_NAME,
+                values,
+                selction,
+                args
+        );
+
+        //update Customer table
+        ContentValues values1 = new ContentValues();
+        values1.put(UsersMaster.Customer.COLUMN_NAME_phone,phone);
+        values1.put(UsersMaster.Customer.COLUMN_NAME_address,address);
+        values1.put(UsersMaster.Customer.COLUMN_NAME_postalCode,postalCode);
+
+        String selction2 = UsersMaster.Customer._ID  + " = ? ";
+
+        int count2 = db.update(
+                UsersMaster.Customer.TABLE_NAME,
+                values1,
+                selction2,
+                args
+        );
+
+        //check if update is successful
+        if(count1 > 0 && count2 >0){
+            return true;
+        }else
+            return false;
+    }
+
+    public boolean deleteCustomer(int id) {
+        SQLiteDatabase db = getReadableDatabase();
+
+        String selection = UsersMaster.User._ID + " = ?";
+        String[] args = {String.valueOf(id)};
+
+
+        //returns number of rows deleted
+        int num = db.delete(
+                UsersMaster.User.TABLE_NAME,
+                selection,
+                args
+        );
+
+        String selection2 = UsersMaster.Customer._ID + " = ?";
+
+        int num2 = db.delete(
+                UsersMaster.Customer.TABLE_NAME,
+                selection2,
+                args
+        );
+
+        if(num > 0 && num2 > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public int signInAsUser(String email, String pwd) {
+        int id = 0;
+        int tempId = 0;
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM "+UsersMaster.User.TABLE_NAME+" WHERE "+UsersMaster.User.COLUMN_NAME_email+ " = ? AND "+UsersMaster.User.COLUMN_NAME_pwd+ " = ? ",new String[] {email,pwd});
+        if(cursor.getCount() > 0){
+            cursor.moveToFirst();
+            tempId = Integer.parseInt(cursor.getString(cursor.getColumnIndex(UsersMaster.Customer._ID)));
+        }
+
+        Cursor cursor2 = db.rawQuery("SELECT * FROM "+UsersMaster.Customer.TABLE_NAME+" WHERE "+UsersMaster.Customer._ID+" = ? ",new String[] {String.valueOf(tempId)});
+        if(cursor2.getCount() > 0){
+            id = tempId;
+        }
+
+        return id;
+    }
+
+    public int signInAsAdmin(String email, String pwd) {
+        int id = 0;
+        int tempId = 0;
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM "+UsersMaster.User.TABLE_NAME+" WHERE "+UsersMaster.User.COLUMN_NAME_email+ " = ? AND "+UsersMaster.User.COLUMN_NAME_pwd+ " = ? ",new String[] {email,pwd});
+        if(cursor.getCount() > 0){
+            cursor.moveToFirst();
+            tempId = Integer.parseInt(cursor.getString(cursor.getColumnIndex(UsersMaster.Customer._ID)));
+        }
+
+        Cursor cursor2 = db.rawQuery("SELECT * FROM "+UsersMaster.Admin.TABLE_NAME+" WHERE "+UsersMaster.Admin._ID+" = ? ",new String[] {String.valueOf(tempId)});
+        if(cursor2.getCount() > 0){
+            id = tempId;
+        }
+        return id;
+
+    }
+
+    public int signInAsSysAdmin(String email, String pwd) {
+        int id = 0;
+        int tempId = 0;
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM "+UsersMaster.User.TABLE_NAME+" WHERE "+UsersMaster.User.COLUMN_NAME_email+ " = ? AND "+UsersMaster.User.COLUMN_NAME_pwd+ " = ? ",new String[] {email,pwd});
+        if(cursor.getCount() > 0){
+            cursor.moveToFirst();
+            tempId = Integer.parseInt(cursor.getString(cursor.getColumnIndex(UsersMaster.Customer._ID)));
+        }
+
+        Cursor cursor2 = db.rawQuery("SELECT * FROM "+UsersMaster.System_Manager.TABLE_NAME+" WHERE "+UsersMaster.System_Manager._ID+" = ? ",new String[] {String.valueOf(tempId)});
+        if(cursor2.getCount() > 0){
+            id = tempId;
+        }
+        return id;
+    }
+
+    //don't need it can use rowID
+//    private int getCustomerID(String email) {
+//        int id = 0;
+//        SQLiteDatabase db = getReadableDatabase();
+//        String[] projection = {
+//                UsersMaster.User._ID
+//        };
+//
+//        String selection = UsersMaster.User.COLUMN_NAME_email + " = ?";
+//        String[] selectionargs = {email};
+//
+//        Cursor cursor = db.query(
+//                UsersMaster.User.TABLE_NAME,
+//                projection,
+//                selection,
+//                selectionargs,
+//                null,
+//                null,
+//                null
+//        );
+//
+//        if(cursor.getCount() == 0) {
+//            Log.d("Amal","inside count"+id);
+//        }else{
+//            cursor.moveToFirst();
+//                id = Integer.parseInt(cursor.getString(cursor.getColumnIndex(UsersMaster.Customer._ID)));
+//        }
+//
+//        Log.d("Amal",""+id);
+//        return id;
+//
+//    }
 }

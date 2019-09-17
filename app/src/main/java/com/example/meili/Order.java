@@ -9,6 +9,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -62,37 +63,45 @@ public class Order extends AppCompatActivity {
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        final UserSession usersession = (UserSession)getApplicationContext();
+        UserSession userSession = UserSession.getInstance();
 
         address = findViewById(R.id.textView12);
         total = findViewById(R.id.textView17);
 
-        address.setText(usersession.getAddress());
-        total.setText(Float.toString(usersession.getTotal()));
+        address.setText(userSession.getAddress());
+        total.setText(Float.toString(userSession.getTotal()));
 
         button = (Button) findViewById(R.id.btn2);
     }
 
     public void onOrderClick(View view){
 
-        final UserSession usersession = (UserSession)getApplicationContext();
+        UserSession userSession = UserSession.getInstance();
+
         DBHelper db = new DBHelper(this);
-        long payid = db.addPayment(usersession.total,usersession.cardType,usersession.cardNo,usersession.exM,usersession.exY,usersession.nameOnCard,usersession.securityCode);
-        usersession.setPayId(payid);
-        long billId = db.addBill(usersession.total);
-        usersession.setBillId(billId);
-        long shipId = db.addShippingInfo(usersession.fName,usersession.lName,usersession.address,usersession.email,usersession.phone,usersession.postalCode);
-        usersession.setShipId(shipId);
+        long payid = db.addPayment(userSession.getTotal(),userSession.getCardType(),userSession.getCardNo(),userSession.getExM(),userSession.getExY(),userSession.getNameOnCard(),userSession.getSecurityCode());
+        userSession.setPayId(payid);
+        //Log.d("Rangeena", userSession.getfName());
+
+        long billId = db.addBill(userSession.getTotal());
+        userSession.setBillId(billId);
+        long shipId = db.addShippingInfo(userSession.getfName(),userSession.getlName(),userSession.getAddress(),userSession.getEmail(),userSession.getPhone(),userSession.getPostalCode());
+        userSession.setShipId(shipId);
 
         SimpleDateFormat currentDate = new SimpleDateFormat("dd/MM/yyyy");
         Date todayDate = new Date();
         String date = currentDate.format(todayDate);
-        boolean status = db.addOrder(date,usersession.userId,usersession.payId,usersession.billId,usersession.shipId);
+        long newRowId = db.addOrder(date,userSession.getUserId(),userSession.getPayId(),userSession.getBillId(),userSession.getShipId());
 
-        if(status == true){
+        //have to change product table to
+
+
+        if(newRowId > 0){
+            userSession.setOrderId(newRowId);
             Intent intent = new Intent(Order.this,successful_order_message.class);
             startActivity(intent);
-        }else{
+        }
+        else{
             Toast toast = Toast.makeText(getApplicationContext(),"Error occured", Toast.LENGTH_LONG);
             toast.show();
         }
