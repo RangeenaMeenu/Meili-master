@@ -2,11 +2,16 @@ package com.example.meili.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import com.example.meili.Order;
 import com.example.meili.UserSession;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -157,6 +162,69 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
         }
 
+    }
+
+    public boolean adduser(String uname,String fname,String lname,String email, String pwd){
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues contentvalues = new ContentValues();
+        contentvalues.put(UsersMaster.User.COLUMN_NAME_userName,uname);
+        contentvalues.put(UsersMaster.User.COLUMN_NAME_fname,fname);
+        contentvalues.put(UsersMaster.User.COLUMN_NAME_lname,lname);
+        contentvalues.put(UsersMaster.User.COLUMN_NAME_email,email);
+        contentvalues.put(UsersMaster.User.COLUMN_NAME_pwd,pwd);
+
+        long newRowId = db.insert(UsersMaster.User.TABLE_NAME,null,contentvalues);
+        System.out.println(newRowId);
+
+       // Log.i("test", "test1");
+
+        if(newRowId == 0)
+            return false;
+        else
+            return true;
+    }
+
+    public Cursor getUsers() {
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " +UsersMaster.User.TABLE_NAME, null);
+        return cursor;
+    }
+
+//    public myObject selectUsers(String id) {
+//        SQLiteDatabase db = getReadableDatabase();
+//        String where = "SELECT * FROM " +UsersMaster.User.TABLE_NAME+ " WHERE " + UsersMaster.User._ID +" = ?";
+//        String[] whereArgs = {id};
+//        Cursor cursor = db.query();
+//    }
+
+    public boolean updateUser(String id, String uname,String fname,String lname,String email, String pwd){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues contentvalues = new ContentValues();
+        contentvalues.put(UsersMaster.User._ID,id);
+        contentvalues.put(UsersMaster.User.COLUMN_NAME_userName,uname);
+        contentvalues.put(UsersMaster.User.COLUMN_NAME_fname,fname);
+        contentvalues.put(UsersMaster.User.COLUMN_NAME_lname,lname);
+        contentvalues.put(UsersMaster.User.COLUMN_NAME_email,email);
+        contentvalues.put(UsersMaster.User.COLUMN_NAME_pwd,pwd);
+        db.update(UsersMaster.User.TABLE_NAME, contentvalues, "id = ?", new String[] { id });
+        return true;
+    }
+
+    public List<String> getAllUsers()
+    {
+        List<String> userlist = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT " +UsersMaster.User._ID+  " FROM " + UsersMaster.User.TABLE_NAME,null);
+        if(cursor.moveToFirst())
+        {
+            do {
+                userlist.add(cursor.getString(0));
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return userlist;
     }
 
     public long addPayment(float total, String cardType, String cardNo, String exM, String exY, String nameOnCard, String securityCode){

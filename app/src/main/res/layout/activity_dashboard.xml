@@ -5,7 +5,7 @@
     android:id="@+id/admin_dash"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#97410588"
+    android:background="#51410588"
     tools:context=".Dashboard">
 
     <Button
