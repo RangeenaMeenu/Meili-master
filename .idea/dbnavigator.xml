@@ -16,7 +16,7 @@
       <scope value="GLOBAL" />
       <destination value="FILE" />
       <format value="EXCEL" />
-      <charset value="UTF-8" />
+      <charset value="windows-1252" />
     </export-instructions>
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -25,13 +25,13 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="798bf5f4-aa0b-4f26-973d-dc83486d2071">
-        <schema name="main" object-types="constraint, dataset trigger, column, index, view, table" />
+        <schema name="main" object-types="constraint, index, table, dataset trigger, view, column" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="798bf5f4-aa0b-4f26-973d-dc83486d2071">
-      <console name="Connection" type="STANDARD" schema="main" session="Main" />
+      <console name="Connection" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -93,7 +93,7 @@
           <port value="1234" />
           <database value="database" />
           <files>
-            <file path="$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/hmd_global-nokia_2_2-HZAL1670CAJ61402516/data/data/com.example.meili/databases/MeiliInfo.db" schema="main" />
+            <file path="C:\Users\ASAAN\Documents\AndroidStudio\DeviceExplorer\hmd_global-nokia_2_2-HZAL1670CAJ61402516\data\data\com.example.meili\databases\MeiliInfo.db" schema="main" />
           </files>
           <type value="NONE" />
           <user value="" />

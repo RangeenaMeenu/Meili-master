@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.meili.Database.DBHelper;
+import com.example.meili.Database.UsersMaster;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -72,7 +74,7 @@ public class update_user extends AppCompatActivity {
         menuItem.setChecked(true);
 
         id1 = findViewById(R.id.txtId);
-        uname = findViewById(R.id.txtId);
+        uname = findViewById(R.id.txtuname3);
         fname = findViewById(R.id.txtfname);
         lname = findViewById(R.id.txtlname);
         email = findViewById(R.id.txtemail);
@@ -80,18 +82,35 @@ public class update_user extends AppCompatActivity {
         pwd2 = findViewById(R.id.txtpwd2);
 
         mydb = new DBHelper(this);
+    }
 
+    public void onclick_check(View view){
+        if(id1.getText().toString().isEmpty()){
+            Toast.makeText(update_user.this, "Please enter User ID", Toast.LENGTH_SHORT).show();
 
+        }else {
+            int id = Integer.parseInt(id1.getText().toString());
+            Cursor userDetails = mydb.selectUser(id);
 
+            if(userDetails.getCount()!= 0){
+                userDetails.moveToFirst();
+                uname.setText(userDetails.getString(userDetails.getColumnIndexOrThrow(UsersMaster.User.COLUMN_NAME_userName)));
+                fname.setText(userDetails.getString(userDetails.getColumnIndexOrThrow(UsersMaster.User.COLUMN_NAME_fname)));
+                lname.setText(userDetails.getString(userDetails.getColumnIndexOrThrow(UsersMaster.User.COLUMN_NAME_lname)));
+                email.setText(userDetails.getString(userDetails.getColumnIndexOrThrow(UsersMaster.User.COLUMN_NAME_email)));
+//            pwd.setText(userDetails.getString(userDetails.getColumnIndexOrThrow(UsersMaster.User.COLUMN_NAME_pwd)));
+//            pwd2.setText(userDetails.getString(userDetails.getColumnIndexOrThrow(UsersMaster.User.COLUMN_NAME_pwd)));
 
+            }else{
+                Toast.makeText(update_user.this, "User does not exist", Toast.LENGTH_SHORT).show();
+            }
+
+        }
     }
 
     public void onclick_updateUser(View view){
 
-        if(id1.getText().toString().isEmpty()){
-            Toast.makeText(update_user.this, "Please enter User ID", Toast.LENGTH_SHORT).show();
-
-        }else if(uname.getText().toString().isEmpty()){
+        if(uname.getText().toString().isEmpty()){
             Toast.makeText(update_user.this, "Please enter Username", Toast.LENGTH_SHORT).show();
 
         }else if(fname.getText().toString().isEmpty()){
@@ -104,37 +123,38 @@ public class update_user extends AppCompatActivity {
             Toast.makeText(update_user.this, "Please enter Email", Toast.LENGTH_SHORT).show();
 
         }else if(!isValidEmailId(email.getText().toString())){
-            Toast.makeText(update_user.this, "Email Not Valid", Toast.LENGTH_SHORT).show();
+            Toast.makeText(update_user.this, "Invalid Email", Toast.LENGTH_SHORT).show();
 
-        }else if(pwd.getText().toString().isEmpty()){
-            Toast.makeText(update_user.this, "Please enter Password", Toast.LENGTH_SHORT).show();
-
-        }else if(pwd2.getText().toString().isEmpty()){
-            Toast.makeText(update_user.this, "Please Re-enter Password", Toast.LENGTH_SHORT).show();
-
-        }else if(pwd.getText().toString().equals(pwd2.getText().toString())) {
-            boolean isUpdated = mydb.updateUser(id1.getText().toString(),
-                    uname.getText().toString(),
-                    fname.getText().toString(),
-                    lname.getText().toString(),
-                    email.getText().toString(),
-                    pwd.getText().toString());
-
-            if(isUpdated){
-                Toast.makeText(update_user.this, "User Updated", Toast.LENGTH_SHORT).show();
-                id1.setText("");
-                uname.setText("");
-                fname.setText("");
-                lname.setText("");
-                email.setText("");
-                pwd.setText("");
-                pwd2.setText("");
-
-            }else {
-                Toast.makeText(update_user.this, "Error", Toast.LENGTH_SHORT).show();
-            }
         }else{
-            Toast.makeText(update_user.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
+            if(pwd.getText().toString().isEmpty() || pwd2.getText().toString().isEmpty()){
+                Toast.makeText(update_user.this, "Please enter both passwords", Toast.LENGTH_SHORT).show();
+            }
+            else if(pwd.getText().toString().equals(pwd2.getText().toString())) {
+
+                boolean isUpdated = mydb.updateUser(Integer.parseInt(id1.getText().toString()),
+                        uname.getText().toString(),
+                        fname.getText().toString(),
+                        lname.getText().toString(),
+                        email.getText().toString(),
+                        pwd.getText().toString());
+
+                if(isUpdated){
+                    Toast.makeText(update_user.this, "User Updated", Toast.LENGTH_SHORT).show();
+                    id1.setText("");
+                    uname.setText("");
+                    fname.setText("");
+                    lname.setText("");
+                    email.setText("");
+                    pwd.setText("");
+                    pwd2.setText("");
+
+                }else {
+                    Toast.makeText(update_user.this, "Error", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(update_user.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
+            }
+
         }
 
     }
