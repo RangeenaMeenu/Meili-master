@@ -98,8 +98,8 @@ public class update_user extends AppCompatActivity {
                 fname.setText(userDetails.getString(userDetails.getColumnIndexOrThrow(UsersMaster.User.COLUMN_NAME_fname)));
                 lname.setText(userDetails.getString(userDetails.getColumnIndexOrThrow(UsersMaster.User.COLUMN_NAME_lname)));
                 email.setText(userDetails.getString(userDetails.getColumnIndexOrThrow(UsersMaster.User.COLUMN_NAME_email)));
-//            pwd.setText(userDetails.getString(userDetails.getColumnIndexOrThrow(UsersMaster.User.COLUMN_NAME_pwd)));
-//            pwd2.setText(userDetails.getString(userDetails.getColumnIndexOrThrow(UsersMaster.User.COLUMN_NAME_pwd)));
+                pwd.setText(userDetails.getString(userDetails.getColumnIndexOrThrow(UsersMaster.User.COLUMN_NAME_pwd)));
+                pwd2.setText(userDetails.getString(userDetails.getColumnIndexOrThrow(UsersMaster.User.COLUMN_NAME_pwd)));
 
             }else{
                 Toast.makeText(update_user.this, "User does not exist", Toast.LENGTH_SHORT).show();
