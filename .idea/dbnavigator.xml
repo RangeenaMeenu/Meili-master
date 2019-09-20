@@ -24,13 +24,13 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="fd433743-283f-4f54-9b49-183f897e3ff8">
-        <schema name="main" object-types="constraint, column, index, dataset trigger, table" />
+      <connection connection-id="798bf5f4-aa0b-4f26-973d-dc83486d2071">
+        <schema name="main" object-types="constraint, dataset trigger, column, index, view, table" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="fd433743-283f-4f54-9b49-183f897e3ff8">
+    <connection id="798bf5f4-aa0b-4f26-973d-dc83486d2071">
       <console name="Connection" type="STANDARD" schema="main" session="Main" />
     </connection>
   </component>
@@ -38,10 +38,22 @@
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="fd433743-283f-4f54-9b49-183f897e3ff8" />
+    <connection id="798bf5f4-aa0b-4f26-973d-dc83486d2071" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="fd433743-283f-4f54-9b49-183f897e3ff8" dataset="main.Products" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="798bf5f4-aa0b-4f26-973d-dc83486d2071" dataset="main.Admin" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="798bf5f4-aa0b-4f26-973d-dc83486d2071" dataset="main.favouriteProduct" active-filter-id="" />
+    <filter-actions connection-id="798bf5f4-aa0b-4f26-973d-dc83486d2071" dataset="main.User" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="798bf5f4-aa0b-4f26-973d-dc83486d2071" dataset="main.Customer" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="798bf5f4-aa0b-4f26-973d-dc83486d2071" dataset="main.bill" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="798bf5f4-aa0b-4f26-973d-dc83486d2071" dataset="main.Orders" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="798bf5f4-aa0b-4f26-973d-dc83486d2071" dataset="main.payment" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="798bf5f4-aa0b-4f26-973d-dc83486d2071" dataset="main.System_Manager" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="798bf5f4-aa0b-4f26-973d-dc83486d2071" dataset="main.favourite" active-filter-id="" />
+    <filter-actions connection-id="798bf5f4-aa0b-4f26-973d-dc83486d2071" dataset="main.android_metadata" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="798bf5f4-aa0b-4f26-973d-dc83486d2071" dataset="main.SoppingCart" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="798bf5f4-aa0b-4f26-973d-dc83486d2071" dataset="main.Products" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="798bf5f4-aa0b-4f26-973d-dc83486d2071" dataset="main.shipping" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -66,7 +78,7 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="fd433743-283f-4f54-9b49-183f897e3ff8" active="true">
+      <connection id="798bf5f4-aa0b-4f26-973d-dc83486d2071" active="true">
         <database>
           <name value="Connection" />
           <description value="" />
@@ -81,7 +93,7 @@
           <port value="1234" />
           <database value="database" />
           <files>
-            <file path="$USER_HOME$/AndroidStudio/DeviceExplorer/hmd_global-nokia_2_2-HZAL1670CAJ61402516/data/data/com.example.meili/databases/MeiliInfo.db" schema="main" />
+            <file path="$USER_HOME$/Documents/AndroidStudio/DeviceExplorer/hmd_global-nokia_2_2-HZAL1670CAJ61402516/data/data/com.example.meili/databases/MeiliInfo.db" schema="main" />
           </files>
           <type value="NONE" />
           <user value="" />
@@ -111,7 +123,7 @@
           <session-management value="true" />
           <ddl-file-binding value="true" />
           <database-logging value="false" />
-          <connect-automatically value="true" />
+          <connect-automatically value="false" />
           <restore-workspace value="true" />
           <restore-workspace-deep value="true" />
           <environment-type value="default" />

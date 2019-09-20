@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".edit_order_activity"></activity>
+        <activity android:name=".update_user_profile"></activity>
+        <activity android:name=".edit_delivery_page" />
+        <activity android:name=".successful_order_message" />
+        <activity android:name=".edit_order_activity" />
         <activity android:name=".SummaryActivity" />
         <activity
             android:name=".Order"
@@ -59,6 +62,24 @@
             android:label="@string/title_activity_categories_" />
         <activity
             android:name=".Favourites_Activity"
+            android:label="@string/title_activity_favourites_" />
+        <activity
+            android:name=".Dashboard"
+            android:label="@string/title_activity_favourites_" />
+        <activity
+            android:name=".add_user"
+            android:label="@string/title_activity_favourites_" />
+        <activity
+            android:name=".remove_user"
+            android:label="@string/title_activity_favourites_" />
+        <activity
+            android:name=".update_user"
+            android:label="@string/title_activity_favourites_" />
+        <activity
+            android:name=".Users"
+            android:label="@string/title_activity_favourites_" />
+        <activity
+            android:name=".view_users"
             android:label="@string/title_activity_favourites_" />
         <activity
             android:name=".MainActivity"

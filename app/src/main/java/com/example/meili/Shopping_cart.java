@@ -19,7 +19,7 @@ public class Shopping_cart extends AppCompatActivity {
     Button button;
     ListView listView;
 
-    String[] name = {"Nike Air Max 720 SATURN", "Girls Bunny shoes", "Mens Leather shoes"};
+    String[] name = {"Nike Air Max 720 SATURN", "Girls Bunny shoes", "Men's Leather shoes"};
     String[] price = {"Rs 34000", "Rs 4300", "Rs 6700"};
     int[] shoe = {R.drawable.nike,R.drawable.bunny,R.drawable.leath};
 

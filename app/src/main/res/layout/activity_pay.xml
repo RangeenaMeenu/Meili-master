@@ -86,31 +86,31 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText4"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="72dp"
         android:layout_marginEnd="73dp"
+        android:layout_marginRight="73dp"
         android:ems="10"
-        android:hint="Expiry"
-        android:inputType="date"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="73dp" />
+        android:hint="@string/hintYear"
+        android:inputType="date" />
 
     <EditText
         android:id="@+id/editText7"
-        android:layout_width="131dp"
+        android:layout_width="137dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtPrice"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="66dp"
-        android:layout_marginTop="83dp"
-        android:layout_marginEnd="25dp"
-        android:layout_toStartOf="@+id/editText5"
-        android:ems="10"
-        android:hint="CVV"
-        android:inputType="number"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="66dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="34dp"
+        android:layout_marginRight="34dp"
+        android:layout_toStartOf="@+id/editText5"
         android:layout_toLeftOf="@+id/editText5"
-        android:layout_marginRight="25dp" />
+        android:ems="10"
+        android:hint="@string/hint_MM"
+        android:inputType="number" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -232,5 +232,75 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/bottom_nav_menu" />
+
+    <EditText
+        android:id="@+id/editText6"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView11"
+        android:layout_below="@+id/editText7"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="139dp"
+        android:layout_marginRight="139dp"
+        android:layout_marginBottom="114dp"
+        android:ems="10"
+        android:hint="@string/hint_SC"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="117dp"
+        android:layout_height="36dp"
+        android:layout_above="@+id/imageView12"
+        android:layout_below="@+id/editText7"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="120dp"
+        android:layout_toStartOf="@+id/editText6"
+        android:layout_toLeftOf="@+id/editText6"
+        android:text="@string/txt_security_code" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="142dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView11"
+        android:layout_below="@+id/editText4"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="200dp"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="69dp"
+        android:layout_marginRight="69dp"
+        android:layout_marginBottom="258dp"
+        android:text="@string/txt_exY" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="134dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageView8"
+        android:layout_below="@+id/textView4"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="249dp"
+        android:layout_marginRight="249dp"
+        android:layout_marginBottom="252dp"
+        android:text="@string/txt_exM" />
 
 </RelativeLayout>

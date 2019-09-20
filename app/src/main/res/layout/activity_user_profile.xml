@@ -8,16 +8,52 @@
     tools:context=".Profile_Activity">
 
     <Button
+        android:id="@+id/button14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="#976AE2"
+        android:onClick="onLogOutClick"
+        android:text="@string/btn_logout"
+        app:layout_constraintBottom_toTopOf="@+id/nav_view"
+        app:layout_constraintEnd_toStartOf="@+id/button15"
+        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#976AE2"
+        android:onClick="onUpdateClick"
+        android:text="@string/btn_update_profile"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button17"
+        app:layout_constraintEnd_toStartOf="@+id/button10"
+        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#976AE2"
+        android:onClick="onDeleteAccountClick"
+        android:text="@string/btn_delete_profile"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button14"
+        app:layout_constraintEnd_toStartOf="@+id/button10"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toEndOf="@+id/button14" />
+
+    <Button
         android:id="@+id/button10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="28dp"
-        android:layout_marginRight="28dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:background="#976AE2"
         android:onClick="onManageMyOrdersClick"
         android:text="@string/btnManagerMyOrders"
-        app:layout_constraintBottom_toTopOf="@+id/nav_view"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button15"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
@@ -65,16 +101,15 @@
                 android:text="@string/first_name" />
 
             <TextView
-                android:id="@+id/editText"
+                android:id="@+id/fname"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="@string/name"
                 android:inputType="textPersonName" />
 
             <TextView
-                android:id="@+id/textView21"
+                android:id="@+id/textView25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/last_name"
@@ -82,12 +117,28 @@
                 tools:layout_editor_absoluteY="437dp" />
 
             <TextView
+                android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:ems="10"
                 android:gravity="center"
-                android:inputType="textPersonName"
-                android:text="@string/frando" />
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/username"
+                tools:layout_editor_absoluteX="54dp"
+                tools:layout_editor_absoluteY="437dp" />
+
+            <TextView
+                android:id="@+id/lname"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="textPersonName" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -97,10 +148,10 @@
                 android:text="@string/contact_no" />
 
             <TextView
+                android:id="@+id/phone"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:gravity="center"
-                android:text="0712345678" />
+                android:gravity="center" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -108,24 +159,24 @@
                 android:text="@string/email" />
 
             <TextView
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:ems="10"
                 android:gravity="center"
-                android:inputType="textEmailAddress"
-                android:text="amal@gmail.com" />
+                android:inputType="textEmailAddress" />
 
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:text="@string/gender" />
+                android:text="@string/txt_postal_code" />
 
             <TextView
+                android:id="@+id/postalCode"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:gravity="center"
-                android:text="@string/male" />
+                android:gravity="center" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -139,9 +190,7 @@
                 android:ems="10"
 
                 android:gravity="center"
-                android:hint="@string/Address"
                 android:inputType="textMultiLine"
-                android:text="colombo 9"
                 tools:layout_editor_absoluteX="32dp"
                 tools:layout_editor_absoluteY="459dp" />
 

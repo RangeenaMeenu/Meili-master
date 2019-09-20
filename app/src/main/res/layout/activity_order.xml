@@ -47,10 +47,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/colorPrimaryDark"
-        android:textColor="@android:color/white"
-        android:textSize="20dp"
+        android:onClick="onOrderClick"
+        android:text="Order"
 
-        android:text="Order" />
+        android:textColor="@android:color/white"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/textView11"
@@ -162,8 +163,7 @@
         android:layout_marginTop="46dp"
         android:layout_marginEnd="114dp"
         android:layout_marginRight="114dp"
-        android:layout_marginBottom="117dp"
-        android:text="Total Amount = Rs 40000" />
+        android:layout_marginBottom="117dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"

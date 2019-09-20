@@ -10,6 +10,7 @@ public final class OrderMaster {
     public static class Payment implements BaseColumns{
         public static final String TABLE_NAME = "payment";
         public static final String COLUMN_AMOUNT = "amount";
+        public static final String COLUMN_CARD_TYPE = "cardType";
         public static final String COLUMN_CARDNO = "creditcardNo";
         public static final String COLUMN_EXM = "ExM";
         public static final String COLUMN_EXY = "ExY";
@@ -24,6 +25,8 @@ public final class OrderMaster {
 
     public static class Shipping implements BaseColumns{
         public static final String TABLE_NAME = "shipping";
+        public static final String COLUMN_FNAME = "fname";
+        public static final String COLUMN_LNAME = "lname";
         public static final String COLUMN_ADDRESS = "address";
         public static final String COLUMN_EMAIL = "email";
         public static final String COLUMN_PHONE = "phone";

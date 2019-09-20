@@ -107,7 +107,41 @@
     <string name="txtTotal">Total</string>
     <string name="btnConfirmOrder">Confirm Order</string>
     <string name="txtMyOrders">My Orders</string>
-    <string name="btnManagerMyOrders">Manage My Orders</string>
+    <string name="btnManagerMyOrders">My Orders</string>
+    <string name="txt_unit_price">Unit Price</string>
+    <string name="txt_security_code">Security Code</string>
+    <string name="txt_exY">Expiration Year :</string>
+    <string name="txt_exM">Expiration Month :</string>
+    <string name="hint_MM">MM</string>
+    <string name="hintYear">YY</string>
+    <string name="hint_SC">CCC</string>
+    <string name="txt_postal_code">Postal Code</string>
+    <string name="txt_order_successful">Order Successful</string>
+    <string name="btn_return_home">Return Home</string>
+
+    <string name="username">Username</string>
+    <string name="reenter_password">Re-enter Password</string>
+    <string name="add_user">Add User</string>
+    <string name="add">Add</string>
+    <string name="manage_users">Manage Users</string>
+    <string name="manage_products">Manage products</string>
+    <string name="admin_dash">Admin Dashboard</string>
+    <string name="user_ID">User ID</string>
+    <string name="remove_user">Remove User</string>
+    <string name="update_user">Update User</string>
+    <string name="view_users">View users</string>
+    <string name="update">Update</string>
+    <string name="users">Users</string>
+    <string name="btn_update_profile">Update</string>
+    <string name="btn_logout">Logout</string>
+    <string name="btn_delete_profile">DElete</string>
+    <string name="txt_update_delivery">update delivery</string>
+    <string name="check">check</string>
+    <string name="txt_dilivery_date">5 - 6 businessdays</string>
+    <string name="txt_orderid">Order Id :</string>
+    <string name="txt_delivery">Estimated delivery :</string>
+    <string name="sysAdmin_login">Login as System Admin</string>
+    <string name="new_password">New Password</string>
 
 
 </resources>

@@ -15,14 +15,21 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Item_page extends AppCompatActivity {
+
+
+
+
+
     private TextView mTextMessage;
     Spinner spinner_color;
     Spinner spinner_qty;
     Spinner spinner_size;
     TextView title;
     ImageView imageView;
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -59,6 +66,7 @@ public class Item_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_page);
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
         mTextMessage = findViewById(R.id.message);
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -90,11 +98,27 @@ public class Item_page extends AppCompatActivity {
         qty_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_qty.setAdapter(qty_adapter);
 
+        //userSession = new UserSession(Item_page.this);
+
 
     }
 
     public void onBuyNowClick(View view){
+        UserSession userSession = UserSession.getInstance();;
+
+        userSession.setProductId(2);
+        userSession.setProductName("New shoe");
+        userSession.setPrice((float)66.99);
+        userSession.setQty(Integer.parseInt(spinner_qty.getSelectedItem().toString()));
+        userSession.setSize(Float.parseFloat(spinner_size.getSelectedItem().toString()));
+
         Intent intent = new Intent(Item_page.this,SummaryActivity.class);
+        intent.putExtra("PRODUCT_ID","2");
+        intent.putExtra("PRICE","66.99");
+        intent.putExtra("PRODUCT_NAME","New shoes");
+        intent.putExtra("SIZE",spinner_size.getSelectedItem().toString());
+        intent.putExtra("QTY",spinner_qty.getSelectedItem().toString());
+        intent.putExtra("COLOUR",spinner_color.getSelectedItem().toString());
         startActivity(intent);
     }
 

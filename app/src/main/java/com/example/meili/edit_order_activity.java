@@ -4,21 +4,41 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.meili.Database.DBHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+
 public class edit_order_activity extends AppCompatActivity {
 
-    DBHelper dbHelper;
+    DBHelper db;
     ListView mlist;
+    ArrayList<String> orderId;
+    ArrayList<String> shipId;
+    UserSession userSession;
+    ArrayAdapter adapter;
+    ImageButton update, delete;
+    private Context context;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     String[] itemNames = {"Men Vulcanized Shoes","Air Mesh Women Sneakers","Chunky WOmen's Sneakers","Bunny Kids Shoes"};
 
@@ -72,24 +92,67 @@ public class edit_order_activity extends AppCompatActivity {
         MenuItem menuItem = menu.getItem(3);
         menuItem.setChecked(true);
 
-        mlist = (ListView) findViewById(R.id.list_view);
-        editOrders_list_adapter listAdapter = new editOrders_list_adapter(edit_order_activity.this, itemNames, itemImage);
-        mlist.setAdapter(listAdapter);
+        db = new DBHelper(this);
+        userSession = UserSession.getInstance();
+        mlist = findViewById(R.id.list_view);
 
-        dbHelper = new DBHelper(getApplicationContext());
+        update = findViewById(R.id.imageButton9);
+        delete = findViewById(R.id.imageButton10);
+
+        orderId = new ArrayList<>();
+        shipId = new ArrayList<>();
+
+        //get Userid from Sharedpreferences
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = sharedPreferences.edit();
+        //userSession.setUserId(Integer.parseInt(sharedPreferences.getString("UserId","")));
+
+
+        Cursor cursor = db.getOrders(userSession.getUserId());
+        Cursor cursor1 = db.getOrderDetails(userSession.getUserId());
+
+        if(cursor.getCount() == 0){
+            Toast.makeText(getApplicationContext(),"No orders available",Toast.LENGTH_LONG).show();
+        }else{
+            while(cursor.moveToNext()){
+                orderId.add(cursor.getString(0));
+                shipId.add(cursor.getString(1));
+
+                //Log.i("shipid", "" + shipId);
+            }
+//
+//            adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,orderId);
+//            mlist.setAdapter(adapter);
+
+            editOrders_list_adapter listAdapter = new editOrders_list_adapter(edit_order_activity.this, orderId, shipId);
+            mlist.setAdapter(listAdapter);
+        }
+
+//        mlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                final CharSequence[] options ={"Update","Delete"};
+//                AlertDialog.Builder dialog =new  AlertDialog.Builder(edit_order_activity.this);
+//
+//                dialog.setTitle("Chose an action");
+//                dialog.setItems(options, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        if(i == 0){
+//                            Toast.makeText(getApplicationContext(),"Update ...",Toast.LENGTH_LONG).show();
+//                            Intent intent = new Intent(edit_order_activity.this,edit_order_activity.class);
+//                            startActivity(intent);
+//                        }
+//                        else{
+//                            Toast.makeText(getApplicationContext(),"Update ...",Toast.LENGTH_LONG).show();
+//
+//                        }
+//                    }
+//                });
+//                dialog.show();
+//            }
+//        });
+
     }
 
-    public void onDeleteOrderClick(View view){
-        new AlertDialog.Builder(this)
-                .setTitle("Delete")
-                .setMessage("Are you sure you want to delete ?")
-                .setNegativeButton("No",null)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //call delete method for order
-                    }
-                }).create().show();
-
-    }
 }
