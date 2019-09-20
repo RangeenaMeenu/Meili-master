@@ -105,6 +105,7 @@ public class Users extends AppCompatActivity {
 //                startActivity(intent);
                   Cursor cursor = mydb.getUsers();
                   if(cursor.getCount() == 0){
+                      showMessage("Error","No Data Found");
                       Toast.makeText(Users.this, "No Users Found In Database", Toast.LENGTH_SHORT).show();
                       return;
                   }
