@@ -20,7 +20,7 @@
         app:menu="@menu/bottom_nav_menu" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtItemDescription"
         android:layout_width="91dp"
         android:layout_height="30dp"
         android:layout_marginStart="28dp"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/txtproductName"
         android:layout_width="90dp"
         android:layout_height="32dp"
         android:layout_marginStart="28dp"
@@ -39,10 +39,10 @@
         android:layout_marginTop="32dp"
         android:text="@string/select_quantity"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/txtItemDescription" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/txtPrice"
         android:layout_width="85dp"
         android:layout_height="28dp"
         android:layout_marginStart="28dp"
@@ -50,10 +50,10 @@
         android:layout_marginTop="24dp"
         android:text="@string/select_size"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/txtproductName" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnViewAllShoes"
         android:layout_width="0dp"
         android:layout_height="51dp"
         android:layout_marginTop="8dp"
@@ -64,7 +64,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3"
+        app:layout_constraintTop_toBottomOf="@+id/editTextItemDescription"
         app:layout_constraintVertical_bias="1.0" />
 
     <EditText
@@ -76,11 +76,11 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/fName"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView2"
-        app:layout_constraintStart_toEndOf="@+id/textView2" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtItemDescription"
+        app:layout_constraintStart_toEndOf="@+id/txtItemDescription" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editTextPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -88,11 +88,11 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/lName"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView3"
-        app:layout_constraintStart_toEndOf="@+id/textView3" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtproductName"
+        app:layout_constraintStart_toEndOf="@+id/txtproductName" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/editTextItemDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
@@ -100,8 +100,8 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/phone"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView4"
-        app:layout_constraintStart_toEndOf="@+id/textView4" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtPrice"
+        app:layout_constraintStart_toEndOf="@+id/txtPrice" />
 
     <TextView
         android:id="@+id/textView18"
@@ -112,7 +112,7 @@
         android:layout_marginTop="48dp"
         android:text="@string/select_color"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPrice" />
 
     <EditText
         android:id="@+id/editText6"
@@ -135,7 +135,7 @@
         android:layout_marginBottom="44dp"
         android:text="@string/txtTotal"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintBottom_toTopOf="@+id/btnViewAllShoes"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView

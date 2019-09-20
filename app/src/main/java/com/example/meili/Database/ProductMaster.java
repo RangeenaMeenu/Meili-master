@@ -11,7 +11,6 @@ public final class ProductMaster {
         public static final String COLUMN_NAME = "name";
         public static final String COLUMN_PRICE = "price";
         public static final String COLUMN_SIZE = "size";
-        public static final String COLUMN_CATEGORY = "category";
         public static final String COLUMN_TYPE = "type";
         public static final String COLUMN_DESCRIPTION = "description";
         public static final String COLUMN_CART_ID = "cartId";

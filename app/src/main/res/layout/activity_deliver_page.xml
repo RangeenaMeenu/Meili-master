@@ -20,7 +20,7 @@
         app:menu="@menu/bottom_nav_menu" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtItemDescription"
         android:layout_width="89dp"
         android:layout_height="40dp"
         android:layout_marginStart="28dp"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/txtproductName"
         android:layout_width="91dp"
         android:layout_height="52dp"
         android:layout_marginStart="28dp"
@@ -39,10 +39,10 @@
         android:layout_marginTop="32dp"
         android:text="Last Name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/txtItemDescription" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/txtPrice"
         android:layout_width="86dp"
         android:layout_height="52dp"
         android:layout_marginStart="28dp"
@@ -50,10 +50,10 @@
         android:layout_marginTop="24dp"
         android:text="Contact Number"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintTop_toBottomOf="@+id/txtproductName" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/txtItemType"
         android:layout_width="95dp"
         android:layout_height="51dp"
         android:layout_marginStart="28dp"
@@ -61,10 +61,10 @@
         android:layout_marginTop="28dp"
         android:text="Shipping Address"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/txtPrice" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnViewAllShoes"
         android:layout_width="161dp"
         android:layout_height="51dp"
         android:layout_marginStart="8dp"
@@ -93,11 +93,11 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/fName"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/txtItemDescription"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/editTextPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
@@ -106,11 +106,11 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/lName"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
+        app:layout_constraintStart_toEndOf="@+id/txtproductName"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/editTextItemDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
@@ -119,8 +119,8 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/phone"
-        app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintStart_toEndOf="@+id/txtPrice"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPrice" />
 
     <EditText
         android:id="@+id/editText4"
@@ -132,7 +132,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/address"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintStart_toEndOf="@+id/txtItemType"
+        app:layout_constraintTop_toBottomOf="@+id/editTextItemDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

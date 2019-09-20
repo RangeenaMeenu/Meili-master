@@ -1,6 +1,8 @@
 package com.example.meili.Database;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -10,9 +12,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "MeiliInfo.db";
 
-    public DBHelper(Context context) {
-        super(context, DATABASE_NAME, null, 1);
-    }
+    public DBHelper(Context context) { super(context, DATABASE_NAME, null, 1); }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -98,7 +98,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 ProductMaster.products.COLUMN_NAME + " TEXT," +
                 ProductMaster.products.COLUMN_PRICE + " REAL," +
                 ProductMaster.products.COLUMN_SIZE + " REAL," +
-                ProductMaster.products.COLUMN_CATEGORY + " TEXT," +
                 ProductMaster.products.COLUMN_TYPE + " TEXT," +
                 ProductMaster.products.COLUMN_DESCRIPTION + " TEXT," +
                 ProductMaster.products.COLUMN_CART_ID + " INTEGER," +
@@ -131,5 +130,62 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
+    }
+
+
+    public boolean addProduct(String name, double price, double size, String type, String description ){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(ProductMaster.products.COLUMN_NAME,name);
+        contentValues.put(ProductMaster.products.COLUMN_PRICE,price);
+        contentValues.put(ProductMaster.products.COLUMN_SIZE,size);
+        contentValues.put(ProductMaster.products.COLUMN_TYPE,type);
+        contentValues.put(ProductMaster.products.COLUMN_DESCRIPTION,description);
+
+        long result = db.insert(ProductMaster.products.TABLE_NAME,null ,contentValues);
+
+        if (result ==-1)
+            return false;
+        else
+            return true;
+    }
+
+    public Cursor getAllProduct(){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor res = db.rawQuery("select * FROM " + ProductMaster.products.TABLE_NAME,null);
+        return res;
+    }
+
+    public boolean updateProduct(String id,String name, double price, double size, String type, String description ){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(ProductMaster.products._ID,id);
+        contentValues.put(ProductMaster.products.COLUMN_NAME,name);
+        contentValues.put(ProductMaster.products.COLUMN_PRICE,price);
+        contentValues.put(ProductMaster.products.COLUMN_SIZE,size);
+        contentValues.put(ProductMaster.products.COLUMN_TYPE,type);
+        contentValues.put(ProductMaster.products.COLUMN_DESCRIPTION,description);
+
+        int num = db.update(ProductMaster.products.TABLE_NAME,contentValues,"_ID = ?",new String[]{id});
+
+        if(num > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+
+
+
+    public int deleteProduct(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        return db.delete(ProductMaster.products.TABLE_NAME,"_ID = ?",new String[] {id});
     }
 }

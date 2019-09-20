@@ -133,7 +133,7 @@
                 android:text="@string/Address" />
 
             <TextView
-                android:id="@+id/editText2"
+                android:id="@+id/editTextPrice"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:ems="10"
