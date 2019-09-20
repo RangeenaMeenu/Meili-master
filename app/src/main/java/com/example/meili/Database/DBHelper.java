@@ -186,6 +186,12 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor getoneUser() {
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " +UsersMaster.User.TABLE_NAME, null);
+        return cursor;
+    }
+
     public Cursor selectUser(int id) {
         SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM " +UsersMaster.User.TABLE_NAME+ " WHERE " +UsersMaster.User._ID+ " = ? " ,new String[] {String.valueOf(id)});
