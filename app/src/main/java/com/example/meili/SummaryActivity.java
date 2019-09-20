@@ -107,9 +107,9 @@ public class SummaryActivity extends AppCompatActivity {
         UserSession userSession = UserSession.getInstance();
 
         //set values to session
-        userSession.setUserId(Integer.parseInt(sharedPreferences.getString("UserId","")));
-        userSession.setProductId(prId);
-        userSession.setTotal(total_price);
+        //userSession.setUserId(Integer.parseInt(sharedPreferences.getString("UserId","")));
+        //userSession.setProductId(prId);
+        //userSession.setTotal(total_price);
 
         //proceed to payment
         Intent intent = new Intent(SummaryActivity.this,pay.class);

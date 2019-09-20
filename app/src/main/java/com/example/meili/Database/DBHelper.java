@@ -317,8 +317,9 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-
+    //DB method for registering user
     public long registeruser(String firstname, String lname,String username, String phone, String email, String address, String postalCode,String pwd) {
+
         SQLiteDatabase db = getWritableDatabase();
 
         //add user to user table
@@ -329,6 +330,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(UsersMaster.User.COLUMN_NAME_email,email);
         values.put(UsersMaster.User.COLUMN_NAME_pwd,pwd);
 
+        //Inserting values to DB table
         long userRowId = db.insert(UsersMaster.User.TABLE_NAME,null,values);
 
         //add user to customer table
@@ -338,8 +340,8 @@ public class DBHelper extends SQLiteOpenHelper {
         values1.put(UsersMaster.Customer.COLUMN_NAME_address,address);
         values1.put(UsersMaster.Customer.COLUMN_NAME_postalCode,postalCode);
 
+        //Inserting values to DB table
         long cusRowId = db.insert(UsersMaster.Customer.TABLE_NAME,null,values1);
-
 
         //check if insertion is successful and return id
         if(userRowId != -1 && cusRowId != -1){
@@ -426,17 +428,20 @@ public class DBHelper extends SQLiteOpenHelper {
         int tempId = 0;
         SQLiteDatabase db = getReadableDatabase();
 
+        //check if user exsists
         Cursor cursor = db.rawQuery("SELECT * FROM "+UsersMaster.User.TABLE_NAME+" WHERE "+UsersMaster.User.COLUMN_NAME_email+ " = ? AND "+UsersMaster.User.COLUMN_NAME_pwd+ " = ? ",new String[] {email,pwd});
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
             tempId = Integer.parseInt(cursor.getString(cursor.getColumnIndex(UsersMaster.Customer._ID)));
         }
 
+        //check if customer exsists
         Cursor cursor2 = db.rawQuery("SELECT * FROM "+UsersMaster.Customer.TABLE_NAME+" WHERE "+UsersMaster.Customer._ID+" = ? ",new String[] {String.valueOf(tempId)});
         if(cursor2.getCount() > 0){
             id = tempId;
         }
 
+        //return customer id
         return id;
     }
 
@@ -445,12 +450,14 @@ public class DBHelper extends SQLiteOpenHelper {
         int tempId = 0;
         SQLiteDatabase db = getReadableDatabase();
 
+        //checks if user exists
         Cursor cursor = db.rawQuery("SELECT * FROM "+UsersMaster.User.TABLE_NAME+" WHERE "+UsersMaster.User.COLUMN_NAME_email+ " = ? AND "+UsersMaster.User.COLUMN_NAME_pwd+ " = ? ",new String[] {email,pwd});
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
             tempId = Integer.parseInt(cursor.getString(cursor.getColumnIndex(UsersMaster.Customer._ID)));
         }
 
+        //check if admin exsists
         Cursor cursor2 = db.rawQuery("SELECT * FROM "+UsersMaster.Admin.TABLE_NAME+" WHERE "+UsersMaster.Admin._ID+" = ? ",new String[] {String.valueOf(tempId)});
         if(cursor2.getCount() > 0){
             id = tempId;
@@ -464,12 +471,14 @@ public class DBHelper extends SQLiteOpenHelper {
         int tempId = 0;
         SQLiteDatabase db = getReadableDatabase();
 
+        //check if user exsists
         Cursor cursor = db.rawQuery("SELECT * FROM "+UsersMaster.User.TABLE_NAME+" WHERE "+UsersMaster.User.COLUMN_NAME_email+ " = ? AND "+UsersMaster.User.COLUMN_NAME_pwd+ " = ? ",new String[] {email,pwd});
         if(cursor.getCount() > 0){
             cursor.moveToFirst();
             tempId = Integer.parseInt(cursor.getString(cursor.getColumnIndex(UsersMaster.Customer._ID)));
         }
 
+        //check if Sysytem admin exsists
         Cursor cursor2 = db.rawQuery("SELECT * FROM "+UsersMaster.System_Manager.TABLE_NAME+" WHERE "+UsersMaster.System_Manager._ID+" = ? ",new String[] {String.valueOf(tempId)});
         if(cursor2.getCount() > 0){
             id = tempId;
@@ -509,4 +518,154 @@ public class DBHelper extends SQLiteOpenHelper {
 //        return id;
 //
 //    }
+
+    public Cursor getUserDetails(int id){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor;
+
+        cursor = db.rawQuery("SELECT * FROM "+UsersMaster.User.TABLE_NAME+" WHERE "+UsersMaster.User._ID+ " = ?",new String[] {String.valueOf(id)});
+        return cursor;
+    }
+
+    public Cursor getCustomerDetails(int id){
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor;
+
+        cursor = db.rawQuery("SELECT * FROM "+UsersMaster.Customer.TABLE_NAME+" WHERE "+UsersMaster.Customer._ID+ " = ?",new String[] {String.valueOf(id)});
+        return cursor;
+    }
+
+    public boolean deleteOrder(int id){
+        SQLiteDatabase db = getReadableDatabase();
+
+        String[] projection = {
+                OrderMaster.orders.COLUMN_PAY_ID,
+                OrderMaster.orders.COLUMN_BILL_ID,
+                OrderMaster.orders.COLUMN_SHIP_ID
+        };
+
+        String selection = OrderMaster.orders._ID + " = ? ";
+        String[] args = {String.valueOf(id)};
+
+        Cursor cursor = db.query(
+                OrderMaster.orders.TABLE_NAME,
+                projection,
+                selection,
+                args,
+                null,
+                null,
+                null
+        );
+
+        cursor.moveToFirst();
+        String shipId = cursor.getString(cursor.getColumnIndexOrThrow(OrderMaster.orders.COLUMN_SHIP_ID));
+        String payId = cursor.getString(cursor.getColumnIndexOrThrow(OrderMaster.orders.COLUMN_PAY_ID));
+        String billId = cursor.getString(cursor.getColumnIndexOrThrow(OrderMaster.orders.COLUMN_BILL_ID));
+
+        //delete data from Orders
+        String selectionOrders = OrderMaster.orders._ID + " = ?";
+        String[] argsOrders = {String.valueOf(id)};
+
+        int statusOrder = db.delete(
+                OrderMaster.orders.TABLE_NAME,
+                selectionOrders,
+                argsOrders
+        );
+
+        //delete Data from shipping
+        String selectionShipping = OrderMaster.Shipping._ID + " = ?";
+        String[] argsShipping = {shipId};
+
+        int statusShipping = db.delete(
+                OrderMaster.Shipping.TABLE_NAME,
+                selectionShipping,
+                argsShipping
+        );
+
+        //delete from payment
+        String selectionPay = OrderMaster.Payment._ID + " = ?";
+        String[] argsPay = {payId};
+
+        int statusPay = db.delete(
+                OrderMaster.Payment.TABLE_NAME,
+                selectionPay,
+                argsPay
+        );
+
+        //delete data from Bill
+        String selectionBill = OrderMaster.Bill._ID + " = ?";
+        String[] argsBill = {billId};
+
+        int statusBill = db.delete(
+                OrderMaster.Bill.TABLE_NAME,
+                selectionBill,
+                argsBill
+        );
+
+        if(statusOrder > 0 && statusShipping > 0 && statusPay > 0 && statusBill > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public Cursor getshippingDetails(String id){
+        SQLiteDatabase db = getReadableDatabase();
+        String[] projection = {
+                OrderMaster.Shipping.COLUMN_FNAME,
+                OrderMaster.Shipping.COLUMN_LNAME,
+                OrderMaster.Shipping.COLUMN_PHONE,
+                OrderMaster.Shipping.COLUMN_ADDRESS,
+                OrderMaster.Shipping.COLUMN_EMAIL,
+                OrderMaster.Shipping.COLUMN_POSTALCODE,
+        };
+
+        String selection = OrderMaster.Shipping._ID + " = ? ";
+        String[] args = {id};
+
+        Cursor cursor = db.query(
+                OrderMaster.Shipping.TABLE_NAME,
+                projection,
+                selection,
+                args,
+                null,
+                null,
+                null
+        );
+
+        return cursor;
+    }
+
+    public boolean updateDelivery(String id, String fName, String lName, String phone, String address, String email, String postalCode) {
+        boolean status;
+
+        SQLiteDatabase db = getWritableDatabase();
+
+
+        ContentValues values = new ContentValues();
+        values.put(OrderMaster.Shipping.COLUMN_FNAME,fName);
+        values.put(OrderMaster.Shipping.COLUMN_LNAME,lName);
+        values.put(OrderMaster.Shipping.COLUMN_ADDRESS,address);
+        values.put(OrderMaster.Shipping.COLUMN_EMAIL,email);
+        values.put(OrderMaster.Shipping.COLUMN_PHONE,phone);
+        values.put(OrderMaster.Shipping.COLUMN_POSTALCODE,postalCode);
+
+        String selection = OrderMaster.Shipping._ID  + " = ? ";
+        String[] args = {id};
+
+        long newRowId = db.update(
+                OrderMaster.Shipping.TABLE_NAME,
+                values,
+                selection,
+                args);
+
+        if(newRowId > 0){
+            status = true;
+        }else{
+            status = false;
+        }
+
+        return status;
+
+    }
 }

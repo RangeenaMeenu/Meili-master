@@ -5,14 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Patterns;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.meili.Database.DBHelper;
+import com.example.meili.Database.UsersMaster;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class update_user_profile extends AppCompatActivity {
@@ -75,35 +78,84 @@ public class update_user_profile extends AppCompatActivity {
         rePassword = findViewById(R.id.rePwd);
 
         db = new DBHelper(this);
-    }
 
-    public void onUpdateClick(View view){
-        _firstname = firstname.getText().toString();
-        _lname = lname.getText().toString();
-        _username = username.getText().toString();
-        _phone = phone.getText().toString();
-        _address = address.getText().toString();
-        _email = email.getText().toString();
-        _postalCode = postalCode.getText().toString();
-        _password = password.getText().toString();
-        _rePassword = rePassword.getText().toString();
+        //add default values from db
+        UserSession userSession = UserSession.getInstance();
+        int id = userSession.getUserId();
 
-        //do validations
-
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        editor = sharedPreferences.edit();
-
-        int id = Integer.parseInt(sharedPreferences.getString("UserId",""));
-
-        boolean status = db.update_customer(id,_firstname,_lname,_username,_phone,_email,_address,_postalCode,_password);
-
-        if(status == true){
-            Toast.makeText(getApplicationContext(),"Updated successfully",Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(update_user_profile.this,user_profile.class);
-            startActivity(intent);
-        }else{
-            Toast.makeText(getApplicationContext(),"Error occurred",Toast.LENGTH_LONG).show();
+        Cursor userDetails = db.getUserDetails(id);
+        if(userDetails.getCount() > 0) {
+            userDetails.moveToFirst();
+            firstname.setText(userDetails.getString(userDetails.getColumnIndexOrThrow(UsersMaster.User.COLUMN_NAME_fname)));
+            lname.setText(userDetails.getString(userDetails.getColumnIndexOrThrow(UsersMaster.User.COLUMN_NAME_lname)));
+            username.setText(userDetails.getString(userDetails.getColumnIndexOrThrow(UsersMaster.User.COLUMN_NAME_userName)));
+            email.setText(userDetails.getString(userDetails.getColumnIndexOrThrow(UsersMaster.User.COLUMN_NAME_email)));
         }
 
+        Cursor customerDetails = db.getCustomerDetails(id);
+        if(customerDetails.getCount() > 0){
+            customerDetails.moveToFirst();
+            phone.setText(customerDetails.getString(customerDetails.getColumnIndexOrThrow(UsersMaster.Customer.COLUMN_NAME_phone)));
+            address.setText(customerDetails.getString(customerDetails.getColumnIndexOrThrow(UsersMaster.Customer.COLUMN_NAME_address)));
+            postalCode.setText(customerDetails.getString(customerDetails.getColumnIndexOrThrow(UsersMaster.Customer.COLUMN_NAME_postalCode)));
+        }
+    }
+
+    public void onUpdateClick(View view) {
+
+        //validations for feilds
+        if (firstname.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Please fill in first name.", Toast.LENGTH_SHORT).show();
+        } else if (lname.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Please fill in last name.", Toast.LENGTH_SHORT).show();
+        } else if (username.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Please fill in username.", Toast.LENGTH_SHORT).show();
+        } else if (phone.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Please fill in contact number.", Toast.LENGTH_SHORT).show();
+        } else if(phone.getText().toString().length() > 10 || phone.getText().toString().length() < 10){
+            Toast.makeText(getApplicationContext(),"Invalid contact number.",Toast.LENGTH_SHORT).show();
+        }else if (email.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Please fill in email address.", Toast.LENGTH_SHORT).show();
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) {
+            Toast.makeText(getApplicationContext(), "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
+        } else if (address.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Please fill in address.", Toast.LENGTH_SHORT).show();
+        } else if (postalCode.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Please fill in postal code.", Toast.LENGTH_SHORT).show();
+        } else if (password.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Please enter a password.", Toast.LENGTH_SHORT).show();
+        } else if (rePassword.getText().toString().isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Please confirm password.", Toast.LENGTH_SHORT).show();
+        } else if (!password.getText().toString().equals(rePassword.getText().toString())) {
+            Toast.makeText(getApplicationContext(), "Passwords do not match.", Toast.LENGTH_SHORT).show();
+        } else {
+            _firstname = firstname.getText().toString();
+            _lname = lname.getText().toString();
+            _username = username.getText().toString();
+            _phone = phone.getText().toString();
+            _address = address.getText().toString();
+            _email = email.getText().toString();
+            _postalCode = postalCode.getText().toString();
+            _password = password.getText().toString();
+            _rePassword = rePassword.getText().toString();
+
+            sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            editor = sharedPreferences.edit();
+
+            //get logged in user's id from shared preferences
+            int id = Integer.parseInt(sharedPreferences.getString("UserId", ""));
+
+            boolean status = db.update_customer(id, _firstname, _lname, _username, _phone, _email, _address, _postalCode, _password);
+
+            if (status == true) {
+                Toast.makeText(getApplicationContext(), "Updated successfully", Toast.LENGTH_LONG).show();
+                //direct user to profile page
+                Intent intent = new Intent(update_user_profile.this, user_profile.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(getApplicationContext(), "Error occurred", Toast.LENGTH_LONG).show();
+            }
+
+        }
     }
 }

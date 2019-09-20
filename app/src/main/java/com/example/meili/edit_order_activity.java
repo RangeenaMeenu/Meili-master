@@ -105,7 +105,7 @@ public class edit_order_activity extends AppCompatActivity {
         //get Userid from Sharedpreferences
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor = sharedPreferences.edit();
-        userSession.setUserId(Integer.parseInt(sharedPreferences.getString("UserId","")));
+        //userSession.setUserId(Integer.parseInt(sharedPreferences.getString("UserId","")));
 
 
         Cursor cursor = db.getOrders(userSession.getUserId());
@@ -128,27 +128,30 @@ public class edit_order_activity extends AppCompatActivity {
             mlist.setAdapter(listAdapter);
         }
 
-        mlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                final CharSequence[] options ={"Update","Delete"};
-                AlertDialog.Builder dialog =new  AlertDialog.Builder(edit_order_activity.this);
-
-                dialog.setTitle("Chose an acyion");
-                dialog.setItems(options, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        if(i == 0){
-                            Toast.makeText(getApplicationContext(),"Update ...",Toast.LENGTH_LONG).show();
-                        }
-                        else{
-                            Toast.makeText(getApplicationContext(),"Update ...",Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-                dialog.show();
-            }
-        });
+//        mlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                final CharSequence[] options ={"Update","Delete"};
+//                AlertDialog.Builder dialog =new  AlertDialog.Builder(edit_order_activity.this);
+//
+//                dialog.setTitle("Chose an action");
+//                dialog.setItems(options, new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        if(i == 0){
+//                            Toast.makeText(getApplicationContext(),"Update ...",Toast.LENGTH_LONG).show();
+//                            Intent intent = new Intent(edit_order_activity.this,edit_order_activity.class);
+//                            startActivity(intent);
+//                        }
+//                        else{
+//                            Toast.makeText(getApplicationContext(),"Update ...",Toast.LENGTH_LONG).show();
+//
+//                        }
+//                    }
+//                });
+//                dialog.show();
+//            }
+//        });
 
     }
 

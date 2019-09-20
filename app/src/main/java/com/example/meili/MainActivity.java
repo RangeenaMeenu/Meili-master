@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         //check if usersession is there
-        //amal's part
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor = sharedPreferences.edit();
 

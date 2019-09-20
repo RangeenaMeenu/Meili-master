@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +16,15 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.meili.Database.DBHelper;
 import com.example.meili.R;
 import com.example.meili.list_adapter;
 
 import java.util.ArrayList;
+
+import static androidx.core.content.ContextCompat.startActivity;
 
 public class editOrders_list_adapter extends ArrayAdapter<String> {
 
@@ -29,6 +33,7 @@ public class editOrders_list_adapter extends ArrayAdapter<String> {
 
     String[] orderId;
     String[] shipId;
+    Context context;
 
     DBHelper db;
 
@@ -50,7 +55,7 @@ public class editOrders_list_adapter extends ArrayAdapter<String> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         ViewHolder mViewHolder = new ViewHolder();
         if(convertView == null) {
             //ViewHolder viewHolder = new ViewHolder();
@@ -58,13 +63,14 @@ public class editOrders_list_adapter extends ArrayAdapter<String> {
             convertView = mInflater.inflate(R.layout.edit_orders_list_view, parent, false);
             //mViewHolder.mItemImage = (ImageView) convertView.findViewById(R.id.imageView);
             mViewHolder.orderId = (TextView) convertView.findViewById(R.id.textView);
-            mViewHolder.mItemName = (TextView) convertView.findViewById(R.id.textView1);
+            mViewHolder.shipId = (TextView) convertView.findViewById(R.id.textView1);
             mViewHolder.price = (TextView) convertView.findViewById(R.id.textView2);
 
             mViewHolder.update = (ImageButton) convertView.findViewById(R.id.imageButton9);
             mViewHolder.delete = (ImageButton) convertView.findViewById(R.id.imageButton10);
 
 
+            final ViewHolder finalMViewHolder = mViewHolder;
             //put button clicks //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             mViewHolder.delete.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -76,48 +82,52 @@ public class editOrders_list_adapter extends ArrayAdapter<String> {
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    //db = new DBHelper(this);
-
+                                    db = new DBHelper(mContext);
                                     //call delete method for order
+                                    boolean status = db.deleteOrder(Integer.parseInt(orderId[position]));
+                                    if(status == true){
+                                        Toast.makeText(mContext,"Successfully deleted",Toast.LENGTH_LONG).show();
+                                        Intent intent = new Intent(mContext,edit_order_activity.class);
+                                        mContext.startActivity(intent);
+                                    }else{
+                                        Toast.makeText(mContext,"Error occured",Toast.LENGTH_LONG).show();
+                                    }
                                 }
                             }).create().show();
                 }
             });
 
-
-//                      mViewHolder.update.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    //add pop up update delivery page
-//                    show_update_delivery_popup();
-//                    Intent intent = new Intent(editOrders_list_adapter.this,edit_order_activity.class);
-//
-//                }
-//            });
-
-
-
+            mViewHolder.update.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //navigate to update delivery page
+                   Intent intent = new Intent(mContext,edit_delivery_page.class);
+                   intent.putExtra("SHIP_ID", shipId[position]);
+                   Log.d("Rangeena",""+shipId[position]);
+                   mContext.startActivity(intent);
+                }
+            });
             convertView.setTag(mViewHolder);
-
-
         }else{
             mViewHolder = (editOrders_list_adapter.ViewHolder) convertView.getTag();
         }
         //mViewHolder.mItemImage.setImageResource(itemImage[position]);
-        mViewHolder.mItemName.setText("Shipping number : "+orderId[position]);
-        mViewHolder.orderId.setText("Order number :"+shipId[position]);
+        mViewHolder.shipId.setText("Shipping number : "+shipId[position]);
+        mViewHolder.orderId.setText("Order number :"+orderId[position]);
 
         return convertView;
     }
-
+//    public void editorderStart(){
+//        Intent intent = new Intent(editOrders_list_adapter.this,edit_order_activity.class);
+//        startActivity(intent);
+//    }
 
     static class ViewHolder{
         public ImageButton update;
         public ImageButton delete;
-        TextView mItemName;
+        TextView shipId;
         TextView orderId;
         TextView price;
-
     }
 
     public static String[] GetStringArray(ArrayList<String> arr)
