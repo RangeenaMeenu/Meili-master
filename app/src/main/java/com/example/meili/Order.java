@@ -93,7 +93,7 @@ public class Order extends AppCompatActivity {
         String date = currentDate.format(todayDate);
         long newRowId = db.addOrder(date,userSession.getUserId(),userSession.getPayId(),userSession.getBillId(),userSession.getShipId());
 
-        //have to change product table to
+        //have to change product table too
 
 
         if(newRowId > 0){

@@ -36,7 +36,7 @@ public class myAdapter extends ArrayAdapter<String> {
             convertView = inflater.inflate(R.layout.shopping_cart_list_view, parent, false);
             viewholder.mshoe = (ImageView) convertView.findViewById(R.id.imageView);
             viewholder.mname = (TextView) convertView.findViewById(R.id.textView);
-            viewholder.mprice = (TextView) convertView.findViewById(R.id.textView2);
+            viewholder.mprice = (TextView) convertView.findViewById(R.id.txtItemDescription);
             convertView.setTag(viewholder);
         }else{
             viewholder = (ViewHolder)convertView.getTag();

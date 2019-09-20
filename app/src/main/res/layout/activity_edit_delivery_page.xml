@@ -6,6 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".edit_delivery_page">
 
+    <TextView
+        android:id="@+id/textView43"
+        android:layout_width="219dp"
+        android:layout_height="43dp"
+        android:layout_above="@+id/textView46"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="24dp"
+        android:text="@string/txt_update_delivery"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
         android:layout_width="0dp"
@@ -22,9 +40,9 @@
         android:id="@+id/textView2"
         android:layout_width="89dp"
         android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="128dp"
         android:text="First Name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -73,14 +91,13 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:background="#976AE2"
-        android:onClick="onConfirmDeliveryClick"
+        android:onClick="onupdateOrderClick"
         android:text="@string/confirm_delivery"
         app:layout_constraintBottom_toTopOf="@+id/nav_view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.901" />
+        app:layout_constraintVertical_bias="0.961" />
 
     <EditText
         android:id="@+id/fname"

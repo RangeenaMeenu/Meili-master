@@ -1,7 +1,6 @@
 package com.example.meili;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -9,15 +8,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 
-import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 public class Admin_Dashboard extends AppCompatActivity {
     private TextView mTextMessage;
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -71,18 +67,6 @@ public class Admin_Dashboard extends AppCompatActivity {
 
     public void onDelete(View view){
         Intent intent = new Intent(Admin_Dashboard.this,DeleteItem.class);
-        startActivity(intent);
-    }
-
-    public void onLogOutClick(View view){
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        editor = sharedPreferences.edit();
-
-        editor.remove("UserId");
-        editor.putString("loginStatus","false");
-        editor.commit();
-
-        Intent intent = new Intent(Admin_Dashboard.this,Profile_Activity.class);
         startActivity(intent);
     }
 

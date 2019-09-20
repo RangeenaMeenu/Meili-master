@@ -45,13 +45,14 @@
                 android:layout_width="108dp"
                 android:layout_height="match_parent"
                 android:text="@string/first_name" />
+
             <EditText
                 android:id="@+id/fname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="@string/name"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:inputType="textPersonName" />
 
             <TextView
@@ -68,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="@string/last_name"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:inputType="textPersonName" />
 
             <TextView
@@ -82,8 +83,7 @@
                 android:layout_height="40dp"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="@string/username"
-                android:inputType="phone" />
+                android:inputType="text" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -97,7 +97,6 @@
                 android:layout_height="40dp"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="@string/contact_no"
                 android:inputType="phone" />
 
             <TextView
@@ -112,7 +111,6 @@
                 android:layout_height="40dp"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="@string/email"
                 android:inputType="textEmailAddress" />
 
             <TextView
@@ -126,7 +124,6 @@
                 android:layout_height="40dp"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="@string/Address"
                 android:inputType="textEmailAddress" />
 
             <TextView
@@ -140,8 +137,7 @@
                 android:layout_height="40dp"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="@string/txt_postal_code"
-                android:inputType="textEmailAddress" />
+                android:inputType="number" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -154,8 +150,7 @@
                 android:layout_height="40dp"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="@string/password"
-                android:inputType="textEmailAddress" />
+                android:inputType="textPassword" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -168,8 +163,7 @@
                 android:layout_height="40dp"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="@string/password"
-                android:inputType="textEmailAddress" />
+                android:inputType="textPassword" />
         </LinearLayout>
     </ScrollView>
 

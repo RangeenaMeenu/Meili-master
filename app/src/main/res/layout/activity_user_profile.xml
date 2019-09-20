@@ -106,11 +106,10 @@
                 android:layout_height="40dp"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="@string/name"
                 android:inputType="textPersonName" />
 
             <TextView
-                android:id="@+id/textView21"
+                android:id="@+id/textView25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/last_name"
@@ -118,12 +117,28 @@
                 tools:layout_editor_absoluteY="437dp" />
 
             <TextView
+                android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:ems="10"
                 android:gravity="center"
-                android:inputType="textPersonName"
-                android:text="@string/frando" />
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/username"
+                tools:layout_editor_absoluteX="54dp"
+                tools:layout_editor_absoluteY="437dp" />
+
+            <TextView
+                android:id="@+id/lname"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="textPersonName" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -133,10 +148,10 @@
                 android:text="@string/contact_no" />
 
             <TextView
+                android:id="@+id/phone"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:gravity="center"
-                android:text="0712345678" />
+                android:gravity="center" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -144,24 +159,24 @@
                 android:text="@string/email" />
 
             <TextView
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:ems="10"
                 android:gravity="center"
-                android:inputType="textEmailAddress"
-                android:text="amal@gmail.com" />
+                android:inputType="textEmailAddress" />
 
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:text="@string/gender" />
+                android:text="@string/txt_postal_code" />
 
             <TextView
+                android:id="@+id/postalCode"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:gravity="center"
-                android:text="@string/male" />
+                android:gravity="center" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -169,15 +184,13 @@
                 android:text="@string/Address" />
 
             <TextView
-                android:id="@+id/editText2"
+                android:id="@+id/editTextPrice"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:ems="10"
 
                 android:gravity="center"
-                android:hint="@string/Address"
                 android:inputType="textMultiLine"
-                android:text="colombo 9"
                 tools:layout_editor_absoluteX="32dp"
                 tools:layout_editor_absoluteY="459dp" />
 
