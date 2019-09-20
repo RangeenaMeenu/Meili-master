@@ -186,6 +186,12 @@ public class DBHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor selectUser(int id) {
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " +UsersMaster.User.TABLE_NAME+ " WHERE " +UsersMaster.User._ID+ " = ? " ,new String[] {String.valueOf(id)});
+        return cursor;
+    }
+
 //    public myObject selectUsers(String id) {
 //        SQLiteDatabase db = getReadableDatabase();
 //        String where = "SELECT * FROM " +UsersMaster.User.TABLE_NAME+ " WHERE " + UsersMaster.User._ID +" = ?";
@@ -193,7 +199,7 @@ public class DBHelper extends SQLiteOpenHelper {
 //        Cursor cursor = db.query();
 //    }
 
-    public boolean updateUser(String id, String uname,String fname,String lname,String email, String pwd){
+    public boolean updateUser(int id, String uname,String fname,String lname,String email, String pwd){
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentvalues = new ContentValues();
         contentvalues.put(UsersMaster.User._ID,id);
@@ -202,7 +208,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentvalues.put(UsersMaster.User.COLUMN_NAME_lname,lname);
         contentvalues.put(UsersMaster.User.COLUMN_NAME_email,email);
         contentvalues.put(UsersMaster.User.COLUMN_NAME_pwd,pwd);
-        db.update(UsersMaster.User.TABLE_NAME, contentvalues, "id = ?", new String[] { id });
+        db.update(UsersMaster.User.TABLE_NAME, contentvalues, "_ID = ?", new String[] { String.valueOf(id) });
         return true;
     }
 

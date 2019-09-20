@@ -141,6 +141,7 @@
     <string name="txt_orderid">Order Id :</string>
     <string name="txt_delivery">Estimated delivery :</string>
     <string name="sysAdmin_login">Login as System Admin</string>
+    <string name="new_password">New Password</string>
 
 
 </resources>
